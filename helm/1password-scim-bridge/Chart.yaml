@@ -12,3 +12,6 @@ sources:
 version: 0.0.0-dev
 annotations:
   application.giantswarm.io/team: "shield"
+dependencies:
+  - name: op-scim-bridge
+    # version: 0.1.0-alpha.1
