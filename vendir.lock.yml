@@ -1,0 +1,9 @@
+apiVersion: vendir.k14s.io/v1alpha1
+directories:
+- contents:
+  - git:
+      commitTitle: 'Merge pull request #152 from 1Password/chas/scim2.9.9...'
+      sha: b324ddc229ba4c43fd3728b83d3de1b0e03ab8a3
+    path: .
+  path: helm/1password-scim-bridge/charts/op-scim-bridge
+kind: LockConfig
