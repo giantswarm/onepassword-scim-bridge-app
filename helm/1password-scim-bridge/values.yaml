@@ -13,6 +13,9 @@ image:
   tag: v0.0.1
   pullPolicy: IfNotPresent
 
+kyvernoPolicyExceptions:
+  enabled: true
+
 op-scim-bridge:
   redis:
     fullnameOverride: onepassword-scim-redis
