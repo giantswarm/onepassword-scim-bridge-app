@@ -12,7 +12,7 @@ image:
 
 op-scim-bridge:
   redis:
-    fullnameOverride: onepassword-scim-redis # works
+    fullnameOverride: onepassword-scim-redis
   scim:
     name: *name
     imageRepository: quay.io/giantswarm/scim
