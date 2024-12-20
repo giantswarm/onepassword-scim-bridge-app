@@ -25,11 +25,11 @@ op-scim-bridge:
     imageRepository: quay.io/giantswarm/scim
 
     initContainerSecurityContext:
-      allowPrivilegeEscalation: false
+      allowPrivilegeEscalation: true
       capabilities:
         drop:
           - ALL
-      privileged: false
+      privileged: true
       readOnlyRootFilesystem: false
       runAsNonRoot: false
       seccompProfile:
@@ -49,6 +49,7 @@ op-scim-bridge:
         type: RuntimeDefault
 
     podSecurityContext:
+      fsGroup: 999
       runAsNonRoot: true
       seccompProfile:
         type: RuntimeDefault

@@ -14,10 +14,22 @@ metadata:
     {{ include "onepassword-scim-bridge-helpers.labels" . | nindent 4 }}
 spec:
   exceptions:
+    - policyName: disallow-privileged-containers
+      ruleNames:
+      - autogen-privileged-containers
+      - privileged-containers
+    - policyName: disallow-privilege-escalation
+      ruleNames:
+      - autogen-privilege-escalation
+      - privilege-escalation
+    - policyName: require-run-as-non-root-user
+      ruleNames:
+      - autogen-run-as-non-root-user
+      - run-as-non-root-user
     - policyName: require-run-as-nonroot
       ruleNames:
-        - autogen-run-as-non-root
-        - run-as-non-root
+      - autogen-run-as-non-root
+      - run-as-non-root
   match:
     any:
       - resources:
