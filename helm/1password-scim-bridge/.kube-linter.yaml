@@ -9,3 +9,5 @@ checks:
   - no-read-only-root-fs
   - latest-tag
   - run-as-non-root
+  - privileged-container
+  - privilege-escalation-container
