@@ -1,3 +1,6 @@
+# The name of this App starts with a number, which K8s doesn't allow in Service names.
+# Fullname overrides are set for this chart and subcharts, but if that becomes a problem,
+# it might be better to rename the whole App.
 name: &name onepassword-scim-bridge
 
 project:
@@ -16,3 +19,32 @@ op-scim-bridge:
   scim:
     name: *name
     imageRepository: quay.io/giantswarm/scim
+    
+    initContainerSecurityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      privileged: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      seccompProfile:
+        type: RuntimeDefault
+    
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      privileged: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      seccompProfile:
+        type: RuntimeDefault
+
+    podSecurityContext:
+      runAsUser: 999
+      runAsGroup: 999
+      runAsNonRoot: true
+      seccompProfile:
+        type: RuntimeDefault
