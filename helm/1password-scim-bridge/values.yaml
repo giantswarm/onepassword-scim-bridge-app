@@ -11,8 +11,8 @@ image:
   pullPolicy: IfNotPresent
 
 op-scim-bridge:
-  common:
-    nameOverride: *name
+  redis:
+    fullnameOverride: onepassword-scim-redis # works
   scim:
-    # name: *name
+    name: *name
     imageRepository: quay.io/giantswarm/scim
