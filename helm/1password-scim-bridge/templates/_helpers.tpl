@@ -35,3 +35,17 @@ giantswarm.io/managed-by: {{ .Release.Name | quote }}
 giantswarm.io/service-type: {{ .Values.serviceType }}
 helm.sh/chart: {{ include "chart" . | quote }}
 {{- end -}}
+
+{{/*
+Name used by Giant Swarm-specific helpers for this App.
+*/}}
+{{- define "onepassword-scim-bridge-helpers.name" -}}
+{{ include "name" . | quote }}
+{{- end -}}
+
+{{/*
+Labels used by Giant Swarm-specific helpers for this App.
+*/}}
+{{- define "onepassword-scim-bridge-helpers.labels" -}}
+{{ include "labels.common" . }}
+{{- end -}}
