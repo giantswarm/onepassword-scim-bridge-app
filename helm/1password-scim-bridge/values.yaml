@@ -19,7 +19,7 @@ op-scim-bridge:
   scim:
     name: *name
     imageRepository: quay.io/giantswarm/scim
-    
+
     initContainerSecurityContext:
       allowPrivilegeEscalation: false
       capabilities:
@@ -30,7 +30,7 @@ op-scim-bridge:
       runAsNonRoot: true
       seccompProfile:
         type: RuntimeDefault
-    
+
     containerSecurityContext:
       allowPrivilegeEscalation: false
       capabilities:
