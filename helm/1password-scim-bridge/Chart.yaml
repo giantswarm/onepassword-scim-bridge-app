@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: 0.0.1
+appVersion: v2.9.9
 name: 1password-scim-bridge
 description: Giant Swarm App packaging for the 1Password SCIM bridge.
 home: https://github.com/giantswarm/1password-scim-bridge-app

@@ -1,5 +1,4 @@
-name: 1password-scim-bridge
-serviceType: managed
+name: &name onepassword-scim-bridge
 
 project:
   branch: "[[ .Branch ]]"
@@ -10,3 +9,7 @@ image:
   name: giantswarm/scim
   tag: v0.0.1
   pullPolicy: IfNotPresent
+
+scim:
+  name: *name
+  imageRepository: quay.io/giantswarm/scim
