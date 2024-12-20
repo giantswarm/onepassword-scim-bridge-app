@@ -27,7 +27,7 @@ op-scim-bridge:
           - ALL
       privileged: false
       readOnlyRootFilesystem: false
-      runAsNonRoot: true
+      runAsNonRoot: false
       seccompProfile:
         type: RuntimeDefault
 
