@@ -15,6 +15,7 @@ image:
 
 kyvernoPolicyExceptions:
   enabled: true
+  namespace: ""
 
 op-scim-bridge:
   redis:

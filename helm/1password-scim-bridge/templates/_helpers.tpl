@@ -40,7 +40,7 @@ helm.sh/chart: {{ include "chart" . | quote }}
 Name used by Giant Swarm-specific helpers for this App.
 */}}
 {{- define "onepassword-scim-bridge-helpers.name" -}}
-{{ include "name" . | quote }}
+{{ include "name" . }}
 {{- end -}}
 
 {{/*
