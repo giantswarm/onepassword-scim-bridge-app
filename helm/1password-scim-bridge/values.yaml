@@ -10,7 +10,10 @@ image:
   tag: v0.0.1
   pullPolicy: IfNotPresent
 
+common:
+  nameOverride: *name
+
 op-scim-bridge:
   scim:
-    name: *name
+    # name: *name
     imageRepository: quay.io/giantswarm/scim
