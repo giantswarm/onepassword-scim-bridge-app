@@ -1,0 +1,23 @@
+scim:
+
+  credentials:
+    volume:
+      enabled: false
+    secret:
+      scimsession:
+        key: scimsession
+        value_json: '{}'
+      workspaceSettings:
+        key: workspace-settings
+        value_json: '{}'
+      workspaceCredentials:
+        key: workspace-credentials
+        value_json: '{}'
+  service:
+    enabled: true
+    type: NodePort
+  probes:
+    liveness:
+      enabled: false
+  config:
+    redisURL: "redis://{{ .Release.Namespace }}-redis-master:6379"

@@ -1,5 +1,7 @@
-name: 1password-scim-bridge
-serviceType: managed
+# The name of this App starts with a number, which K8s doesn't allow in Service names.
+# Fullname overrides are set for this chart and subcharts, but if that becomes a problem,
+# it might be better to rename the whole App.
+name: &name onepassword-scim-bridge
 
 project:
   branch: "[[ .Branch ]]"
@@ -10,3 +12,47 @@ image:
   name: giantswarm/scim
   tag: v0.0.1
   pullPolicy: IfNotPresent
+
+kyvernoPolicyExceptions:
+  enabled: true
+  namespace: ""
+
+op-scim-bridge:
+  redis:
+    fullnameOverride: onepassword-scim-redis
+  scim:
+    name: *name
+    imageRepository: quay.io/giantswarm/scim
+
+    config:
+      redisURL: "redis://1password-scim-redis-master:6379"  # Can be removed once app name is fixed.
+
+    initContainerSecurityContext:
+      allowPrivilegeEscalation: true
+      capabilities:
+        drop:
+          - ALL
+      privileged: true
+      readOnlyRootFilesystem: false
+      runAsNonRoot: false
+      seccompProfile:
+        type: RuntimeDefault
+
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      privileged: false
+      readOnlyRootFilesystem: false
+      runAsUser: 999
+      runAsGroup: 999
+      runAsNonRoot: true
+      seccompProfile:
+        type: RuntimeDefault
+
+    podSecurityContext:
+      fsGroup: 999
+      runAsNonRoot: true
+      seccompProfile:
+        type: RuntimeDefault

@@ -1,0 +1,6 @@
+dependencies:
+- name: op-scim-bridge
+  repository: ""
+  version: 2.11.7
+digest: sha256:e45626ac423c2472e3cc0f862197f688bc24e0b96a796f746d9243f96ae7e37a
+generated: "2024-12-19T18:11:22.744711729-05:00"
