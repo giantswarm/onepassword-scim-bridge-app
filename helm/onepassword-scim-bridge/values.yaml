@@ -32,9 +32,9 @@ op-scim-bridge:
             - path: /
               pathType: ImplementationSpecific
       tls:
-         - secretName: op-scim-tls
-           hosts:
-             - "op-scim.local"
+        - secretName: op-scim-tls
+          hosts:
+            - "op-scim.local"
 
     initContainerSecurityContext:
       allowPrivilegeEscalation: true
