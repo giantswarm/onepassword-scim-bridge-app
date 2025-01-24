@@ -1,9 +1,9 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/giantswarm/1password-scim-bridge-app/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/giantswarm/1password-scim-bridge-app/tree/main)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/giantswarm/1password-scim-bridge-app/badge)](https://securityscorecards.dev/viewer/?uri=github.com/giantswarm/1password-scim-bridge-app)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/giantswarm/onepassword-scim-bridge-app/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/giantswarm/onepassword-scim-bridge-app/tree/main)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/giantswarm/onepassword-scim-bridge-app/badge)](https://securityscorecards.dev/viewer/?uri=github.com/giantswarm/onepassword-scim-bridge-app)
 
 [Read me after cloning this template (GS staff only)](https://handbook.giantswarm.io/docs/dev-and-releng/app-developer-processes/adding_app_to_appcatalog/)
 
-# 1password-scim-bridge chart
+# onepassword-scim-bridge chart
 
 This repository contains Giant Swarm App packaging for the 1Password SCIM Bridge Helm chart.
 

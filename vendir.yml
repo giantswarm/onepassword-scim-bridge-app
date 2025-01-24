@@ -1,7 +1,7 @@
 apiVersion: vendir.k14s.io/v1alpha1
 kind: Config
 directories:
-- path: helm/1password-scim-bridge/charts/op-scim-bridge
+- path: helm/onepassword-scim-bridge/charts/op-scim-bridge
   contents:
   - path: .
     git:

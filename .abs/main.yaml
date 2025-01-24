@@ -1,4 +1,4 @@
 replace-chart-version-with-git: true
 generate-metadata: true
-chart-dir: ./helm/1password-scim-bridge
+chart-dir: ./helm/onepassword-scim-bridge
 destination: ./build
