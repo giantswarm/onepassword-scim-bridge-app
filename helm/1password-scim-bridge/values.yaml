@@ -25,7 +25,7 @@ op-scim-bridge:
     imageRepository: quay.io/giantswarm/scim
 
     config:
-      redisURL: "redis://1password-scim-bridge-redis-master:6379"  # Can be removed once app name is fixed.
+      redisURL: "redis://1password-scim-redis-master:6379"  # Can be removed once app name is fixed.
 
     initContainerSecurityContext:
       allowPrivilegeEscalation: true
