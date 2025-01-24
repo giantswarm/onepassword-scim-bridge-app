@@ -16,6 +16,26 @@ op-scim-bridge:
   scim:
     imageRepository: quay.io/giantswarm/scim
 
+    service:
+      type: ClusterIP
+
+    ingress:
+      enabled: true
+      className: "nginx"
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-giantswarm
+        kubernetes.io/tls-acme: "true"
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      hosts:
+        - host: "op-scim.local"
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+         - secretName: op-scim-tls
+           hosts:
+             - "op-scim.local"
+
     initContainerSecurityContext:
       allowPrivilegeEscalation: true
       capabilities:
