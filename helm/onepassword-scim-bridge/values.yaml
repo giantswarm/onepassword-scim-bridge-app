@@ -12,6 +12,9 @@ kyvernoPolicyExceptions:
   enabled: true
   namespace: ""
 
+ciliumNetworkPolicy:
+  enabled: true
+
 op-scim-bridge:
   scim:
     imageRepository: quay.io/giantswarm/scim
