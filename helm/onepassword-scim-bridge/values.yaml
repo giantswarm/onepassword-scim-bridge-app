@@ -13,7 +13,7 @@ kyvernoPolicyExceptions:
   namespace: ""
 
 ciliumNetworkPolicy:
-  enabled: true
+  enabled: false
 
 op-scim-bridge:
   scim:
