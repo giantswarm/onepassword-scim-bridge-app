@@ -20,6 +20,7 @@ spec:
             app.kubernetes.io/instance: onepassword-scim-bridge
       ports:
       - port: "6379"
+        protocol: TCP
     # Allow DNS resolution.
     - to:
       - podSelector:
