@@ -18,9 +18,9 @@ spec:
           matchLabels:        
             app.kubernetes.io/name: redis
             app.kubernetes.io/instance: onepassword-scim-bridge
-      ports:
-      - port: "6379"
-        protocol: TCP
+      - ports:
+        - port: "6379"
+          protocol: TCP
     # Allow DNS resolution.
     - to:
       - podSelector:
@@ -31,15 +31,15 @@ spec:
           matchLabels:
             io.kubernetes.pod.namespace: kube-system
             k8s-app: k8s-dns-node-cache
-      ports:
-      - port: "1053"
-        protocol: UDP
-      - port: "1053"
-        protocol: TCP
-      - port: "53"
-        protocol: UDP
-      - port: "53"
-        protocol: TCP
+      - ports:
+        - port: "1053"
+          protocol: UDP
+        - port: "1053"
+          protocol: TCP
+        - port: "53"
+          protocol: UDP
+        - port: "53"
+          protocol: TCP
 ---
 {{ if .Values.ciliumNetworkPolicy.enabled }}
 apiVersion: "cilium.io/v2"
