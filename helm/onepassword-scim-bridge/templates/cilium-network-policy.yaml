@@ -39,4 +39,14 @@ spec:
           protocol: UDP
         - port: "53"
           protocol: TCP
+  ingress:
+    # Allow ingress from the ingress controller.
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: ingress-nginx
+            app.kubernetes.io/instance: ingress-nginx
+            io.kubernetes.pod.namespace: nginx
+      toPorts:
+      - ports:
+        - port: "8080"
 {{ end }}
