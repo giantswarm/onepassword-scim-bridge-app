@@ -9,7 +9,9 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      {{- include "op-scim-bridge.selectorLabels" . | nindent 6 }}
+      # this is fragile and should be templated, but the inner chart is very spaghetti.
+      app: onepassword-scim-bridge-op-scim-bridge
+      app.kubernetes.io/component: onepassword-scim-bridge-op-scim-bridge
   egress:
     # Allow egress to redis.                  
     - toEndpoints:
