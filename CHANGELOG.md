@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add CiliumNetworkPolicy allowing ingress to acme solvers during TLS setup.
+
 ## [0.0.1] - 2025-01-28
 
 ### Added

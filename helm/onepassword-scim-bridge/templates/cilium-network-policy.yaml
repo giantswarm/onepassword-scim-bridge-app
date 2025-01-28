@@ -50,11 +50,11 @@ spec:
       - ports:
         - port: "8080"
 ---
-# Allow ingress to the cm-acme-solver pods from cert-manager when creating certificates.
+# Allow ingress to the cm-acme-solver pods from ingress-nginx when creating certificates.
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: {{ include "onepassword-scim-bridge-helpers.name" . }}-cert-manager-cnp
+  name: {{ include "onepassword-scim-bridge-helpers.name" . }}-cert-solver-cnp
   namespace: {{ .Release.Namespace }}
   labels:
     {{ include "onepassword-scim-bridge-helpers.labels" . | nindent 4 }}
@@ -63,7 +63,6 @@ spec:
     matchLabels:
       acme.cert-manager.io/http01-solver: "true"
   ingress:
-    # Allow ingress from the cert-manager controller.
     - fromEndpoints:
         - matchLabels:
             app.kubernetes.io/instance: ingress-nginx
