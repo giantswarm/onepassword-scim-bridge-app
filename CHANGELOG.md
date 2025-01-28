@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add affinity to separate the bridge pod from redis.
+
+### Changed
+
+- Deliver credentials via secret instead of volume.
+- Change OCI registry to `gsoci.azurecr.io` instead of `quay.io`.
+
 ## [0.0.2] - 2025-01-28
 
 ### Added
