@@ -15,7 +15,7 @@ kyvernoPolicyExceptions:
 ciliumNetworkPolicy:
   enabled: true
 
-scimsession: "" 
+scimsession: ""
 
 op-scim-bridge:
   scim:
