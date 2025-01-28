@@ -1,0 +1,52 @@
+{{ if .Values.ciliumNetworkPolicy.enabled }}
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: {{ include "onepassword-scim-bridge-helpers.name" . }}-cnp
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{ include "onepassword-scim-bridge-helpers.labels" . | nindent 4 }}
+spec:
+  endpointSelector:
+    matchLabels:
+      # this is fragile and should be templated, but the inner chart is very spaghetti.
+      app: onepassword-scim-bridge-op-scim-bridge
+      app.kubernetes.io/component: onepassword-scim-bridge-op-scim-bridge
+  egress:
+    # Allow egress to redis.                  
+    - toEndpoints:
+        - matchLabels:        
+            app.kubernetes.io/name: redis
+            app.kubernetes.io/instance: onepassword-scim-bridge
+      toPorts:
+      - ports:
+        - port: "6379"
+    # Allow DNS resolution.
+    - toEndpoints:
+      - matchLabels:
+          io.kubernetes.pod.namespace: kube-system
+          k8s-app: coredns
+      - matchLabels:
+          io.kubernetes.pod.namespace: kube-system
+          k8s-app: k8s-dns-node-cache
+      toPorts:
+      - ports:
+        - port: "1053"
+          protocol: UDP
+        - port: "1053"
+          protocol: TCP
+        - port: "53"
+          protocol: UDP
+        - port: "53"
+          protocol: TCP
+  ingress:
+    # Allow ingress from the ingress controller.
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: ingress-nginx
+            app.kubernetes.io/instance: ingress-nginx
+            io.kubernetes.pod.namespace: kube-system
+      toPorts:
+      - ports:
+        - port: "8080"
+{{ end }}
