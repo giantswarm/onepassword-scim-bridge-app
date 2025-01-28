@@ -9,7 +9,7 @@ image:
   pullPolicy: IfNotPresent
 
 kyvernoPolicyExceptions:
-  enabled: true
+  enabled: false
   namespace: ""
 
 ciliumNetworkPolicy:
@@ -22,7 +22,7 @@ op-scim-bridge:
     credentials:
       volume:
         enabled: false
-      secret:
+      secrets:
         enabled: true
         name: onepassword-scim-bridge-credentials
 
