@@ -6,8 +6,8 @@ home: https://github.com/giantswarm/onepassword-scim-bridge-app
 # TODO: Add the 1P icon to our web assets.
 icon: https://s.giantswarm.io/app-icons/giantswarm/1/light.svg
 sources:
-- https://github.com/1Password/op-scim-helm
-version: 0.0.0-dev
+  - https://github.com/1Password/op-scim-helm
+version: 0.0.1
 annotations:
   application.giantswarm.io/team: "shield"
 dependencies:
