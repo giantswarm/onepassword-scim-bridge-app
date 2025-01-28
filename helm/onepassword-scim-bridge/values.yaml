@@ -15,6 +15,8 @@ kyvernoPolicyExceptions:
 ciliumNetworkPolicy:
   enabled: true
 
+scimsession: "" 
+
 op-scim-bridge:
   scim:
     imageRepository: gsoci.azurecr.io/giantswarm/scim
