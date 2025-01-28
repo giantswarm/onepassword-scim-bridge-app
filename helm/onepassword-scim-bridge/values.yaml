@@ -23,7 +23,7 @@ op-scim-bridge:
       type: ClusterIP
 
     ingress:
-      enabled: true
+      enabled: false
       className: "nginx"
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-giantswarm
