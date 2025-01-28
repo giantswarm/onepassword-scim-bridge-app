@@ -3,21 +3,30 @@ project:
   commit: "[[ .SHA ]]"
 
 image:
-  registry: quay.io
+  registry: gsoci.azurecr.io
   name: giantswarm/scim
   tag: v0.0.1
   pullPolicy: IfNotPresent
 
 kyvernoPolicyExceptions:
-  enabled: true
+  enabled: false
   namespace: ""
 
 ciliumNetworkPolicy:
   enabled: true
 
+scimsession: ""
+
 op-scim-bridge:
   scim:
-    imageRepository: quay.io/giantswarm/scim
+    imageRepository: gsoci.azurecr.io/giantswarm/scim
+
+    credentials:
+      volume:
+        enabled: false
+      secrets:
+        enabled: true
+        name: onepassword-scim-bridge-credentials
 
     service:
       type: ClusterIP
@@ -38,6 +47,24 @@ op-scim-bridge:
         - secretName: op-scim-tls
           hosts:
             - "op-scim.local"
+
+    # Try to spread the bridge pod and redis. This is fragile because the inner chart has some static labels and some dynamic ones.
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values:
+                      - redis
+                  - key: app.kubernetes.io/instance
+                    operator: In
+                    values:
+                      - onepassword-scim-bridge
+              topologyKey: "kubernetes.io/hostname"
 
     initContainerSecurityContext:
       allowPrivilegeEscalation: true
