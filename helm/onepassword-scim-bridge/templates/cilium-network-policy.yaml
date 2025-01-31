@@ -13,6 +13,12 @@ spec:
       app: onepassword-scim-bridge-op-scim-bridge
       app.kubernetes.io/component: onepassword-scim-bridge-op-scim-bridge
   egress:
+    # Allow egress to the public internet for contacting 1Password.
+    - toPorts:
+      - ports:
+        - port: "443"
+      toEntities:
+        - world
     # Allow egress to redis.                  
     - toEndpoints:
         - matchLabels:        
