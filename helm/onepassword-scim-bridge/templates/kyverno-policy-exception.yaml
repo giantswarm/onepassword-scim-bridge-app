@@ -7,7 +7,7 @@ apiVersion: kyverno.io/v2beta1
 kind: PolicyException
 metadata:
   name: {{ include "onepassword-scim-bridge-helpers.name" . }}-exception
-  namespace: {{ .Values.kyvernoPolicyExceptions.namespace | default .Release.Namespace }}
+  namespace: policy-exceptions
   annotations:
     "helm.sh/hook": "pre-install,pre-upgrade"
   labels:

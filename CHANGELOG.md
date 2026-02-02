@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Set Kyverno PolicyException namespace to fixed value `policy-exceptions`.
+
 ## [0.0.4] - 2025-01-31
 
 ### Added
