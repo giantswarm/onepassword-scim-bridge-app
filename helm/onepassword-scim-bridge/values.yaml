@@ -9,7 +9,7 @@ image:
   pullPolicy: IfNotPresent
 
 kyvernoPolicyExceptions:
-  enabled: false
+  enabled: true
   namespace: "policy-exceptions"
 
 ciliumNetworkPolicy:
