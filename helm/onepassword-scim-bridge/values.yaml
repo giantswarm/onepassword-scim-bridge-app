@@ -10,7 +10,7 @@ image:
 
 kyvernoPolicyExceptions:
   enabled: false
-  namespace: ""
+  namespace: "policy-exceptions"
 
 ciliumNetworkPolicy:
   enabled: true
