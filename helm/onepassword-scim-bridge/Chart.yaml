@@ -10,6 +10,8 @@ sources:
 version: 0.0.4
 annotations:
   application.giantswarm.io/team: "shield"
+  io.giantswarm.application.audience: all
+  io.giantswarm.application.managed: "true"
 dependencies:
   - name: op-scim-bridge
     version: 2.11.7
