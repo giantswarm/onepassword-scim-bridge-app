@@ -17,6 +17,34 @@ ciliumNetworkPolicy:
 
 scimsession: ""
 
+scim:
+  # route defines the configuration for a Gateway API route resource
+  # This is functionally equivalent to the Ingress resource but uses Gateway API
+  # Supports multiple route kinds: HTTPRoute, GRPCRoute, TCPRoute, TLSRoute, UDPRoute
+  # TLS is configured at the Gateway level, not in the route itself
+  route:
+    enabled: true
+    # kind sets the route kind (HTTPRoute, GRPCRoute, TCPRoute, TLSRoute, UDPRoute)
+    kind: HTTPRoute
+    annotations: {}
+    labels: {}
+    # hostnames defines the hostnames that this route should match
+    hostnames: []
+    # - chart-example.local
+    # parentRefs defines which Gateway(s) this route should attach to
+    parentRefs: []
+    # - name: envoy-gateway
+    #   namespace: envoy-gateway-system
+    #   sectionName: https
+    # rules defines the routing rules for this route
+    rules:
+      - matches:
+          - path:
+              type: PathPrefix
+              value: /
+    # filters define processing steps applied to matching requests
+    filters: []
+
 op-scim-bridge:
   scim:
     imageRepository: gsoci.azurecr.io/giantswarm/scim
