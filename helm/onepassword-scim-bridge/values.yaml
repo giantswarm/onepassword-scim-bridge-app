@@ -18,6 +18,7 @@ ciliumNetworkPolicy:
 scimsession: ""
 
 scim:
+  name: "onepassword-scim-bridge"
   # route defines the configuration for a Gateway API route resource
   # This is functionally equivalent to the Ingress resource but uses Gateway API
   # Supports multiple route kinds: HTTPRoute, GRPCRoute, TCPRoute, TLSRoute, UDPRoute
