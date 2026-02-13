@@ -17,6 +17,8 @@ ciliumNetworkPolicy:
 
 scimsession: ""
 
+# This top-level scim key is only present because we intend to contribute the HTTPRoute upstream, where this key would exist.
+# If/when that happens, this configuration would move down into op-scim-bridge.scim.
 scim:
   name: "onepassword-scim-bridge"
   # route defines the configuration for a Gateway API route resource
@@ -37,7 +39,7 @@ scim:
     parentRefs:
     - name: giantswarmio-default
       namespace: envoy-gateway-system
-      sectionName: giantswarmio-https
+      sectionName: https
     # rules defines the routing rules for this route
     rules:
       - matches:
