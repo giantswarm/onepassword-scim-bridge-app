@@ -32,14 +32,9 @@ scim:
     annotations: {}
     labels: {}
     # hostnames defines the hostnames that this route should match
-    hostnames:
-      - "op-scim.operations.awsprod.gigantic.io"
-      - "op-scim.giantswarm.io"
+    hostnames: []
     # parentRefs defines which Gateway(s) this route should attach to
-    parentRefs:
-    - name: giantswarmio-default
-      namespace: envoy-gateway-system
-      sectionName: https
+    parentRefs: []
     # rules defines the routing rules for this route
     rules:
       - matches:
