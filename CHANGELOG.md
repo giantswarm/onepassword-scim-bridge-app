@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add Gateway API route (e.g. `HTTPRoute`) as an alternative to Ingress.
+
+### Changed
+
+- Remove default Ingress configuration (was already disabled by default).
+
 ## [0.0.4] - 2025-01-31
 
 ### Added

@@ -17,6 +17,33 @@ ciliumNetworkPolicy:
 
 scimsession: ""
 
+# This top-level scim key is only present because we intend to contribute the HTTPRoute upstream, where this key would exist.
+# If/when that happens, this configuration would move down into op-scim-bridge.scim.
+scim:
+  name: "onepassword-scim-bridge"
+  # route defines the configuration for a Gateway API route resource
+  route:
+    enabled: true
+    # kind sets the route kind (HTTPRoute, GRPCRoute, TCPRoute, TLSRoute, UDPRoute)
+    kind: HTTPRoute
+    annotations: {}
+    labels: {}
+    # hostnames defines the hostnames that this route should match
+    hostnames: []
+    #  - "scim.example.com"
+    # parentRefs defines which Gateway(s) this route should attach to
+    parentRefs: []
+    #  - name: default-gateway
+    #    namespace: envoy-gateway-system
+    #    sectionName: https
+    # rules defines the routing rules for this route
+    rules:
+      - matches:
+          - path:
+              type: PathPrefix
+              value: /
+    filters: []
+
 op-scim-bridge:
   scim:
     imageRepository: gsoci.azurecr.io/giantswarm/scim
@@ -30,23 +57,6 @@ op-scim-bridge:
 
     service:
       type: ClusterIP
-
-    ingress:
-      enabled: false
-      className: "nginx"
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-giantswarm
-        kubernetes.io/tls-acme: "true"
-        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-      hosts:
-        - host: "op-scim.local"
-          paths:
-            - path: /
-              pathType: ImplementationSpecific
-      tls:
-        - secretName: op-scim-tls
-          hosts:
-            - "op-scim.local"
 
     # Try to spread the bridge pod and redis. This is fragile because the inner chart has some static labels and some dynamic ones.
     affinity:
