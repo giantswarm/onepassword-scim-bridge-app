@@ -93,9 +93,10 @@ spec:
           image: {{ .Values.scim.imageRepository }}:{{ tpl .Values.scim.version . }}
           imagePullPolicy: {{ .Values.scim.imagePullPolicy }}
           command: ["/op-scim/op-scim"]
+          {{- with .Values.scim.containerSecurityContext }}
           securityContext:
-            runAsUser: 999
-            runAsGroup: 999
+            {{- . | toYaml | nindent 12 }}
+          {{- end }}
             allowPrivilegeEscalation: false
           {{- with .Values.scim.imagePullSecrets }}
           imagePullSecrets:
