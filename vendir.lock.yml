@@ -1,0 +1,9 @@
+apiVersion: vendir.k14s.io/v1alpha1
+directories:
+- contents:
+  - git:
+      commitTitle: 'Merge pull request #161 from 1Password/gb/chartsecure-redis...'
+      sha: d336f02db21cc092c87f577ad788992f8cf1bf82
+    path: .
+  path: helm/onepassword-scim-bridge/charts/op-scim-bridge
+kind: LockConfig

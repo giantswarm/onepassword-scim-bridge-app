@@ -45,10 +45,6 @@ spec:
       serviceAccountName: {{ tpl .Values.scim.name . }}
         {{- end }}
       {{- end }}
-      securityContext:
-        {{- with .Values.scim.podSecurityContext }}
-          {{- . | toYaml | nindent 8 }}
-        {{- end }}
       {{- with .Values.scim.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -83,20 +79,16 @@ spec:
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- with .Values.scim.initContainerSecurityContext }}
-          securityContext:
-            {{- . | toYaml | nindent 12 }}
-          {{- end }}
       {{- end }}
       containers:
         - name: {{ tpl .Values.scim.name . }}
           image: {{ .Values.scim.imageRepository }}:{{ tpl .Values.scim.version . }}
           imagePullPolicy: {{ .Values.scim.imagePullPolicy }}
           command: ["/op-scim/op-scim"]
-          {{- with .Values.scim.containerSecurityContext }}
           securityContext:
-            {{- . | toYaml | nindent 12 }}
-          {{- end }}
+            runAsUser: 999
+            runAsGroup: 999
+            allowPrivilegeEscalation: false
           {{- with .Values.scim.imagePullSecrets }}
           imagePullSecrets:
             {{- toYaml . | nindent 12 }}
