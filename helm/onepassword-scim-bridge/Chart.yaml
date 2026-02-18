@@ -3,8 +3,7 @@ appVersion: v2.9.13
 name: onepassword-scim-bridge
 description: Giant Swarm App packaging for the 1Password SCIM bridge.
 home: https://github.com/giantswarm/onepassword-scim-bridge-app
-# TODO: Add the 1P icon to our web assets.
-icon: https://s.giantswarm.io/app-icons/giantswarm/1/light.svg
+icon: https://s.giantswarm.io/app-icons/onepassword/1/light.png
 sources:
   - https://github.com/1Password/op-scim-helm
 version: 1.0.0
