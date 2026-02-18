@@ -21,8 +21,6 @@ on:
         required: true
         type: string
 
-permissions: {}
-
 jobs:
   debug_info:
     name: Debug info
