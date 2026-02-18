@@ -9,10 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add Gateway API route (e.g. `HTTPRoute`) as an alternative to Ingress.
 - Add `io.giantswarm.application.audience` and `io.giantswarm.application.managed` chart annotations for Backstage visibility.
 
 ### Changed
 
+- Remove default Ingress configuration (was already disabled by default).
+- Update to upstream chart version 2.11.10, containing bridge version v2.9.13.
 - Migrate chart metadata annotations to OCI-compatible format.
 
 ## [0.0.4] - 2025-01-31
