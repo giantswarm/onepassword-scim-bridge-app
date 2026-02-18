@@ -12,4 +12,4 @@ annotations:
   application.giantswarm.io/team: "shield"
 dependencies:
   - name: op-scim-bridge
-    version: 2.11.7
+    version: 2.11.10
