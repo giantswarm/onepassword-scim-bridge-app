@@ -45,6 +45,10 @@ spec:
       serviceAccountName: {{ tpl .Values.scim.name . }}
         {{- end }}
       {{- end }}
+      securityContext:
+        {{- with .Values.scim.podSecurityContext }}
+          {{- . | toYaml | nindent 8 }}
+        {{- end }}
       {{- with .Values.scim.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -78,6 +82,10 @@ spec:
           {{- with .Values.scim.initContainers.resources }}
           resources:
             {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.scim.initContainerSecurityContext }}
+          securityContext:
+            {{- . | toYaml | nindent 12 }}
           {{- end }}
       {{- end }}
       containers:
