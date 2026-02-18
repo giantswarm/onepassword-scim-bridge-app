@@ -11,3 +11,4 @@ checks:
   - run-as-non-root
   - privileged-container
   - privilege-escalation-container
+  - pdb-unhealthy-pod-eviction-policy
