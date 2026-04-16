@@ -1,0 +1,44 @@
+{{- if .Values.kyvernoPolicyExceptions.enabled }}
+{{- if .Capabilities.APIVersions.Has "kyverno.io/v2/PolicyException" }}
+apiVersion: kyverno.io/v2
+{{- else}}
+apiVersion: kyverno.io/v2beta1
+{{- end }}
+kind: PolicyException
+metadata:
+  name: {{ include "onepassword-scim-bridge-helpers.name" . }}-exception
+  namespace: {{ .Values.kyvernoPolicyExceptions.namespace | default .Release.Namespace }}
+  annotations:
+    "helm.sh/hook": "pre-install,pre-upgrade"
+  labels:
+    {{ include "onepassword-scim-bridge-helpers.labels" . | nindent 4 }}
+spec:
+  exceptions:
+    - policyName: disallow-privileged-containers
+      ruleNames:
+      - autogen-privileged-containers
+      - privileged-containers
+    - policyName: disallow-privilege-escalation
+      ruleNames:
+      - autogen-privilege-escalation
+      - privilege-escalation
+    - policyName: require-run-as-non-root-user
+      ruleNames:
+      - autogen-run-as-non-root-user
+      - run-as-non-root-user
+    - policyName: require-run-as-nonroot
+      ruleNames:
+      - autogen-run-as-non-root
+      - run-as-non-root
+  match:
+    any:
+      - resources:
+          kinds:
+            - Deployment
+            - ReplicaSet
+            - Pod
+          namespaces:
+            - {{ .Release.Namespace }}
+          names:
+            - "onepassword-scim-bridge*"
+{{- end }}

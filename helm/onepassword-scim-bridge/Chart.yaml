@@ -1,0 +1,16 @@
+apiVersion: v2
+appVersion: v2.9.13
+name: onepassword-scim-bridge
+description: Giant Swarm App packaging for the 1Password SCIM bridge.
+home: https://github.com/giantswarm/onepassword-scim-bridge-app
+icon: https://s.giantswarm.io/app-icons/onepassword/1/light.png
+sources:
+  - https://github.com/1Password/op-scim-helm
+version: 1.0.0
+annotations:
+  io.giantswarm.application.audience: giantswarm
+  io.giantswarm.application.managed: "true"
+  io.giantswarm.application.team: "shield"
+dependencies:
+  - name: op-scim-bridge
+    version: 2.11.10
